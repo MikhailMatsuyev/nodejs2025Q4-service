@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException, UnprocessableEntityException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  UnprocessableEntityException,
+} from '@nestjs/common';
 import { IFavoritesResponse } from './interfaces/favorites.interface';
 import { StorageService } from '../storage/storage.service';
 

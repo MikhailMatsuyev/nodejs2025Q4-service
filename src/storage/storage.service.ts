@@ -137,10 +137,7 @@ export class StorageService {
     return this.favorites;
   }
 
-  addToFavorites(
-    type: 'artists' | 'albums' | 'tracks',
-    id: string,
-  ): void {
+  addToFavorites(type: 'artists' | 'albums' | 'tracks', id: string): void {
     if (!this.favorites[type].includes(id)) {
       this.favorites[type].push(id);
     }

@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  ForbiddenException,
+} from '@nestjs/common';
 import { randomUUID } from 'crypto';
 import { IUser, IUserResponse } from './interfaces/user.interface';
 import { CreateUserDto, UpdatePasswordDto } from './dto/user.dto';
@@ -61,7 +65,12 @@ export class UserService {
   }
 
   private excludePassword(user: IUser): IUserResponse {
-    const { password, ...userWithoutPassword } = user;
-    return userWithoutPassword;
+    return {
+      id: user.id,
+      login: user.login,
+      version: user.version,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
+    };
   }
 }
