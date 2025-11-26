@@ -17,7 +17,7 @@ async function bootstrap() {
     }),
   );
 
-  const openApiPath = join(__dirname, '..', 'doc', 'api.yaml');
+  const openApiPath = join(process.cwd(), 'doc', 'api.yaml');
   const openApiFile = readFileSync(openApiPath, 'utf8');
   const document = yaml.load(openApiFile) as OpenAPIObject;
   SwaggerModule.setup('doc', app, document);
