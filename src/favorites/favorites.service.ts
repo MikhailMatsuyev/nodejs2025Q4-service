@@ -3,17 +3,21 @@ import {
   NotFoundException,
   UnprocessableEntityException,
 } from '@nestjs/common';
-import { IFavoritesResponse } from './interfaces/favorites.interface';
+import {
+  IFavorites,
+  IFavoritesResponse,
+} from './interfaces/favorites.interface';
 import { StorageService } from '../storage/storage.service';
+import { IArtist } from '../artist/interfaces/artist.interface';
 
 @Injectable()
 export class FavoritesService {
   constructor(private readonly storageService: StorageService) {}
 
   findAll(): IFavoritesResponse {
-    const favorites = this.storageService.getFavorites();
+    const favorites: IFavorites = this.storageService.getFavorites();
 
-    const artists = favorites.artists
+    const artists: IArtist[] = favorites.artists
       .map((id) => this.storageService.getArtistById(id))
       .filter((artist) => artist !== undefined);
 

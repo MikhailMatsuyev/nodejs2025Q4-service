@@ -13,7 +13,7 @@ export class ArtistService {
   }
 
   findOne(id: string): IArtist {
-    const artist = this.storageService.getArtistById(id);
+    const artist: IArtist = this.storageService.getArtistById(id);
     if (!artist) {
       throw new NotFoundException('Artist not found');
     }
@@ -31,7 +31,7 @@ export class ArtistService {
   }
 
   update(id: string, dto: UpdateArtistDto): IArtist {
-    const artist = this.storageService.getArtistById(id);
+    const artist: IArtist = this.storageService.getArtistById(id);
     if (!artist) {
       throw new NotFoundException('Artist not found');
     }
